@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caja 3D Animada</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      background: #fff0f5;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .gift-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gift-box {
+      width: 120px;
+      height: 120px;
+      perspective: 800px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .box-body {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(0deg);
+      transition: transform 1s;
+    }
+
+    .box-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #f472b6;
+      border: 2px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .top {
+      transform: rotateX(90deg) translateZ(60px);
+      transform-origin: top center;
+      background: #ec4899;
+      transition: transform 1s;
+    }
+
+    .front  { transform: rotateY(0deg) translateZ(60px); }
+    .back   { transform: rotateY(180deg) translateZ(60px); }
+    .left   { transform: rotateY(-90deg) translateZ(60px); }
+    .right  { transform: rotateY(90deg) translateZ(60px); }
+    .bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+    .box-number {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-box {
+      width: 300px;
+      height: 300px;
+      background: #fff;
+      border-radius: 15px;
+      position: relative;
+      padding-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: pop 0.5s ease-out;
+    }
+
+    .box-3d {
+      width: 100px;
+      height: 100px;
+      perspective: 800px;
+      position: relative;
+      transform-style: preserve-3d;
+      margin-bottom: 10px;
+    }
+
+    .box-3d .box-face {
+      background: #f472b6;
+    }
+
+    #surpriseImg {
+      width: 100px;
+      margin-top: 10px;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    #closeBtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ec4899;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    #confetti {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="gift-grid">
+    <div class="gift-box" id="box1">
+      <div class="box-body">
+        <div class="box-face top"></div>
+        <div class="box-face front"></div>
+        <div class="box-face left"></div>
+        <div class="box-face right"></div>
+        <div class="box-face back"></div>
+        <div class="box-face bottom"></div>
+      </div>
+      <div class="box-number">1</div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-box" id="animatedBox">
+      <div class="box-3d">
+        <div class="box-face top" id="modalTop"></div>
+        <div class="box-face front"></div>
+        <div class="box-face left"></div>
+        <div class="box-face right"></div>
+        <div class="box-face back"></div>
+        <div class="box-face bottom"></div>
+      </div>
+      <img id="surpriseImg" src="img/sorpresa1.png" alt="Sorpresa" />
+      <button id="closeBtn">❌</button>
+      <canvas id="confetti"></canvas>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
