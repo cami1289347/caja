@@ -6,30 +6,26 @@
   <title>Caja 3D Animada</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      margin: 0;
-      background: #fff0f5;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-  .encabezado {
-  width: 100%;
-  height: 250px; /* Tamaño tipo banner */
-  background-image: url('img/banner.jpg'); /* Cambia por tu imagen */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 0 0 30px 30px; /* Opcional para bordes redondeados abajo */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Sombra para que se vea más "pro" */
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
 
-
-
+/* El header tipo banner completo */
+.encabezado {
+  width: 100%;
+  height: auto; /* Permite que crezca según la imagen */
+  background-image: url('img/banner.jpg'); /* tu imagen aquí */
+  background-size: contain; /* ¡Para que NO la recorte! */
+  background-position: top center;
+  background-repeat: no-repeat;
+  aspect-ratio: 16 / 6; /* Ajusta proporción de banner: ancho/alto */
+}
 
   </style>
 </head>
